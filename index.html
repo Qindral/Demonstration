@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visueller Operationsassistent</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Operationsassistent für Mund-, Rachen- und Halsraum</h1>
+      <p>
+        Bewege das 3D-Modell, um dir die Anatomie anzusehen. Gib anschließend eine
+        Operation ein, um eine Simulation oder Beschreibung zu erhalten.
+      </p>
+    </header>
+
+    <main>
+      <section class="viewer-section">
+        <model-viewer
+          src="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models/2.0/BrainStem/glTF/BrainStem.gltf"
+          alt="3D-Visualisierung des oberen Halsbereichs"
+          ar
+          auto-rotate
+          camera-controls
+          interaction-prompt="auto"
+          exposure="0.9"
+        >
+          <div class="model-fallback" slot="poster">
+            <p>3D-Modell konnte nicht geladen werden.</p>
+          </div>
+        </model-viewer>
+        <small class="model-credit">
+          Modell: BrainStem von Khronos Group (CC BY 4.0)
+        </small>
+      </section>
+
+      <section class="interaction-section">
+        <form id="operation-form">
+          <label for="operation-input">Gewünschte Operation</label>
+          <div class="input-row">
+            <input
+              id="operation-input"
+              type="text"
+              name="operation"
+              placeholder="z.&nbsp;B. Submandibulektomie"
+              required
+            />
+            <button type="submit">Anzeigen</button>
+          </div>
+        </form>
+
+        <article id="operation-output" aria-live="polite"></article>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Hinweis: Die Animationen sind schematisch und dienen ausschließlich der
+        Veranschaulichung.
+      </p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
